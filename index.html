@@ -23,6 +23,17 @@
     align-items: center;
     padding: 1rem;
   }
+
+  /* NEW: main wrapper to cap screen width at 1920px and center all content */
+  .wrapper {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   header {
     text-align: center;
     max-width: 800px;
@@ -38,6 +49,8 @@
     color: #cbd5e1;
     line-height: 1.5;
   }
+
+  /* CANVAS KE STYLES BILKUL WAHI RAKHE (unchanged) */
   canvas {
     width: 100%;
     max-width: 800px;
@@ -86,42 +99,42 @@
 </style>
 </head>
 <body>
-<header>
-  <h1>Michelson Interferometer</h1>
-  
-</header>
+<div class="wrapper">
+  <header>
+    <h1>Michelson Interferometer</h1>
+  </header>
 
-<canvas id="sim" width="800" height="450"></canvas>
+  <canvas id="sim" width="800" height="450"></canvas>
 
-<div class="controls">
-  <div class="control-group">
-    <label>Mirror Position Δ (μm): <span id="deltaValue">0.00</span></label><br>
-    <input type="range" id="deltaSlider" min="-10" max="10" step="0.05" value="0">
+  <div class="controls">
+    <div class="control-group">
+      <label>Mirror Position Δ (μm): <span id="deltaValue">0.00</span></label><br>
+      <input type="range" id="deltaSlider" min="-10" max="10" step="0.05" value="0">
+    </div>
+    <div class="control-group">
+      <label>Wavelength (nm): <span id="lambdaValue">600</span></label><br>
+      <input type="range" id="lambdaSlider" min="400" max="700" step="1" value="600">
+    </div>
+    <div class="control-group">
+      <button id="toggleAnim">⏸ Pause Animation</button>
+    </div>
+    <div class="info">
+      <p>
+        The Michelson interferometer was invented by <strong>Albert A. Michelson</strong>.
+        It measures extremely small distance differences using interference of light.
+      </p>
+      <p>
+        A beam splitter divides a laser into two perpendicular paths. Each beam reflects from a mirror and returns to the splitter.
+        When recombined, they form <strong>interference fringes</strong> bright when the waves align, dark when out of phase.
+      </p>
+      <p>
+        Adjusting one mirror changes the path length and shifts the fringes, demonstrating how precise light interference can measure tiny displacements.
+      </p>
+    </div>
   </div>
-  <div class="control-group">
-    <label>Wavelength (nm): <span id="lambdaValue">600</span></label><br>
-    <input type="range" id="lambdaSlider" min="400" max="700" step="1" value="600">
-  </div>
-  <div class="control-group">
-    <button id="toggleAnim">⏸ Pause Animation</button>
-  </div>
-  <div class="info">
-    <p>
-      The Michelson interferometer was invented by <strong>Albert A. Michelson</strong>.
-      It measures extremely small distance differences using interference of light.
-    </p>
-    <p>
-      A beam splitter divides a laser into two perpendicular paths. Each beam reflects from a mirror and returns to the splitter.
-      When recombined, they form <strong>interference fringes</strong> bright when the waves align, dark when out of phase.
-    </p>
-    <p>
-      Adjusting one mirror changes the path length and shifts the fringes, demonstrating how precise light interference can measure tiny displacements.
-    </p>
-  </div>
+
+  <footer>Made for Physics Students • Michelson Interferometer Interactive AS.TechForce</footer>
 </div>
-
-
-<footer>Made for Physics Students • Michelson Interferometer Interactive AS.TechForce</footer>
 
 <script>
 const canvas = document.getElementById("sim");
